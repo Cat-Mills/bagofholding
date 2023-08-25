@@ -16,13 +16,16 @@ const handlerFunctions = {
 
     addItem: (req,res) => {
         const {name} = req.body
+        const {type} = req.body
+        const {qty} = req.body
+        const {value} = req.body
 
         const newItem = {
             id: globalId,
-            name,
-            qty,
-            value,
-            type
+            name: name,
+            qty: qty,
+            value: value,
+            type: type
         }
         TEST_ITEMS.push(newItem)
         globalId++
@@ -44,8 +47,8 @@ const handlerFunctions = {
         let item = TEST_ITEMS[index]
 
         item.name = name ?? item.name
-        item.qty = +qty ?? item.qty
-        item.value = +value ?? item.value
+        item.qty = +(qty ?? item.qty)
+        item.value = +(value ?? item.value)
         item.type = type ?? item.type
 
         res.send(item)
