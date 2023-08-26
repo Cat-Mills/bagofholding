@@ -5,7 +5,7 @@ export default function AddButton({addClick}) {
         <tr>
             <td></td>
             <td colSpan='4'>
-                <button onClick={addClick} >Add</button>
+                <button id="addButton" onClick={addClick} >Add Item</button>
             </td>
         </tr>
     )

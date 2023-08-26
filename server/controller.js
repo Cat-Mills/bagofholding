@@ -2,7 +2,7 @@
 let TEST_ITEMS = [
     {id: 0, name: 'Hand Axe', qty: 2, value: 50, type: 'Weapon'},
     {id: 1, name: 'Torch', qty: 1, value: 10, type: 'Tool'},
-    {id: 2, name: 'Jerky', qty: 5, value: 15, type: 'Food'},
+    {id: 2, name: 'Jerky', qty: 5, value: 15, type: 'Supplies'},
 ]
 
 let globalId = 3

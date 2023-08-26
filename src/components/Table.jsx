@@ -8,11 +8,12 @@ import TableHeader from "./TableHeader.jsx";
 const Table = ({initialInventory}) => {
 
     const [currentList, setCurrentList] = useState(initialInventory)
-
-
+    
+    
     async function addRow() {
-        let {data} = await axios.post('/addItem', {name: 'Item Name', qty: 1, value: 0, type: 'Item Type'})
+        let {data} = await axios.post('/addItem', {name: 'Name', qty: 1, value: 0, type: 'Type'})
         setCurrentList([...currentList, data])
+        // setIsEditing(true)
     }
 
 
@@ -33,6 +34,8 @@ const Table = ({initialInventory}) => {
             id={id}
             initialInventory={{name: name, qty: qty, value: value, type: type}}
             removeItem={removeItem}
+            // isEditing={isEditing}
+            // setIsEditing={setIsEditing}
             />
         )
     })
@@ -44,7 +47,9 @@ const Table = ({initialInventory}) => {
                     <TableHeader />
                 </thead>
                 <tbody>
+
                     {rows}
+                    
                 </tbody>
                 <tfoot>
                     <AddButton addClick={addRow} />

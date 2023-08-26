@@ -3,8 +3,8 @@ import React from "react";
 import axios from "axios";
 
 
-export default function Rows({initialInventory,id,removeItem}) {
 
+export default function Rows({initialInventory,id,removeItem, }) {
     const [isEditing, setIsEditing] = useState(false)
     const [name, setName] = useState(initialInventory.name)
     const [qty, setQty] = useState(initialInventory.qty)
@@ -21,6 +21,7 @@ export default function Rows({initialInventory,id,removeItem}) {
             value,
             type
         }
+        console.log({type})
         const {data} = await axios.put(`/editItem/${id}`,
         bodyObj)
         if(!data.err){
@@ -32,12 +33,12 @@ export default function Rows({initialInventory,id,removeItem}) {
     return isEditing ? (
         <tr>
             <td>
-                <button
+                <button id="save"
                 onClick={() => {
                     setIsEditing(false)
                     editItem()}}>Save
                 </button>
-                <button
+                <button id="delete"
                 onClick={() => {
                     setIsEditing(false)
                     removeItem(id)}}>Delete
@@ -65,11 +66,19 @@ export default function Rows({initialInventory,id,removeItem}) {
                 />
             </td>
             <td>
-                <input
+        <select name="type" id="type" onChange={(e) => {setType(e.target.value)}}> 
+            <option value={type}>Type</option> 
+            <option value="Weapon">Weapon</option> 
+            <option value="Tool">Tool</option> 
+            <option value="Supplies">Supplies</option> 
+            <option value="Ammo">Ammo</option> 
+            <option value="Misc">Misc</option> 
+        </select>
+                {/* <input
                 type="text"
                 value={type}
                 onChange={(e) => {setType(e.target.value)}}
-                />
+                /> */}
             </td>
         </tr>
     ) : (
